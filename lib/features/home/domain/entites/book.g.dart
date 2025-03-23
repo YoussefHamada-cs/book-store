@@ -18,7 +18,7 @@ class BookAdapter extends TypeAdapter<Book> {
     };
     return Book(
       title: fields[2] as String?,
-      auther: fields[3] as String?,
+      authors: (fields[3] as List).cast<String>(),
       date: fields[4] as String?,
       image: fields[1] as String?,
     );
@@ -33,7 +33,7 @@ class BookAdapter extends TypeAdapter<Book> {
       ..writeByte(2)
       ..write(obj.title)
       ..writeByte(3)
-      ..write(obj.auther)
+      ..write(obj.authors)
       ..writeByte(4)
       ..write(obj.date);
   }

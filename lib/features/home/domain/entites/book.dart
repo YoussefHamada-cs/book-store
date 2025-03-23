@@ -8,13 +8,13 @@ class Book {
   @HiveField(2)
   final String? title;
   @HiveField(3)
-  final String? auther;
+  final List<String> authors;
   @HiveField(4)
   final String? date;
 
   Book({
     required this.title,
-    required this.auther,
+    required this.authors,
     required this.date,
     required this.image,
   });

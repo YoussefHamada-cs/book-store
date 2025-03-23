@@ -25,8 +25,11 @@ class HomeRepoImpl implements HomeRepo {
       }
       books = await homeRemoteDataSource.fechfeaturebooks();
       return right(books);
-    } on DioException catch (e) {
-      return left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -40,8 +43,11 @@ class HomeRepoImpl implements HomeRepo {
       }
       books = await homeRemoteDataSource.fechnewestbooks();
       return right(books);
-    } on DioException catch (e) {
-      return left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 }

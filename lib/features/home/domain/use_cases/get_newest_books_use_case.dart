@@ -5,12 +5,12 @@ import 'package:books_store/features/home/domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 
 class GetNewestBooksUseCase extends UseCase<List<Book>, NoParam> {
-  final HomeRepo _homeRepo;
+  final HomeRepo homeRepo;
 
-  GetNewestBooksUseCase(this._homeRepo);
+  GetNewestBooksUseCase(this.homeRepo);
 
   @override
   Future<Either<Failure, List<Book>>> call([NoParam? param]) async {
-    return await _homeRepo.fechnewestbooks();
+    return await homeRepo.fechnewestbooks();
   }
 }

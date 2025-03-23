@@ -28,7 +28,6 @@ class HomeRemoteDataSourceImpel extends HomeRemoteDataSource {
     var data = await apiService.get(
       endpoint: 'volumes?q=story science&Filtering=free-ebooks&Sorting=newest',
     );
-    
     List<Book> books = getbookslist(data);
 
     saveData(books, AppStrings.knewestBox);
@@ -38,7 +37,7 @@ class HomeRemoteDataSourceImpel extends HomeRemoteDataSource {
   List<Book> getbookslist(Map<String, dynamic> data) {
     List<Book> books = [];
     for (var items in data['items']) {
-      books.add(BookModel.fromJson(items) );
+      books.add(BookModel.fromJson(items));
     }
     return books;
   }

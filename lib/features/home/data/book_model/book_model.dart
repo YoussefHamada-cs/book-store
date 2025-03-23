@@ -24,12 +24,12 @@ class BookModel extends Book {
     this.saleInfo,
     this.accessInfo,
     this.searchInfo,
-  }) : super(title: volumeInfo?.title??'no title',
-   auther: volumeInfo?.authors != null && volumeInfo!.authors!.isNotEmpty
-    ? volumeInfo.authors!.first
-    : 'no author',
-    date: volumeInfo?.publishedDate??'no date',
-     image: volumeInfo?.imageLinks?.thumbnail??'https://demofree.sirv.com/nope-not-here.jpg');
+  }) : super(
+         title: volumeInfo?.title ?? 'No Title',
+         authors: volumeInfo?.authors ?? [],
+         date: volumeInfo?.publishedDate ?? 'no date',
+         image: volumeInfo?.imageLinks?.thumbnail,
+       );
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
     kind: json['kind'] as String?,

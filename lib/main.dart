@@ -11,11 +11,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  setupServiceLocator();
   Hive.registerAdapter(BookAdapter());
   await Hive.openBox<Book>(AppStrings.kFeatureBox);
   await Hive.openBox<Book>(AppStrings.knewestBox);
+  setupServiceLocator();
   Bloc.observer = SimpleBlocObserer();
   runApp(const MyApp());
 }
