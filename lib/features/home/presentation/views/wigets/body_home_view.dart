@@ -3,7 +3,8 @@ import 'package:books_store/core/presentation/widgets/slider_card.dart';
 import 'package:books_store/core/resources/app_strings.dart';
 import 'package:books_store/core/resources/styles.dart';
 import 'package:books_store/core/router/app_routes.dart';
-import 'package:books_store/features/home/presentation/views/wigets/newset_list_view.dart';
+import 'package:books_store/features/home/presentation/views/wigets/newest_list_view_bloc_builder.dart';
+
 import 'package:books_store/features/home/presentation/views/wigets/porpodals_list_view_bloc_builder.dart';
 
 import 'package:flutter/material.dart';
@@ -49,8 +50,9 @@ class BodyHomeView extends StatelessWidget {
             child: Text(AppStrings.newset, style: Styles.textstyle25),
           ),
         ),
-        NewsetListView(),
+        NewestListViewBlocBuilder(),
       ],
     );
   }
 }
+
