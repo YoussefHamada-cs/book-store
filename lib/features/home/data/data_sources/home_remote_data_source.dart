@@ -5,7 +5,7 @@ import 'package:books_store/features/home/data/book_model/book_model.dart';
 import 'package:books_store/features/home/domain/entites/book.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<Book>> fechfeaturebooks();
+  Future<List<Book>> fechfeaturebooks({int pageNumber=0});
   Future<List<Book>> fechnewestbooks();
 }
 
@@ -14,9 +14,9 @@ class HomeRemoteDataSourceImpel extends HomeRemoteDataSource {
 
   HomeRemoteDataSourceImpel(this.apiService);
   @override
-  Future<List<Book>> fechfeaturebooks() async {
+  Future<List<Book>> fechfeaturebooks({int pageNumber=0}) async {
     var data = await apiService.get(
-      endpoint: 'volumes?q=computer science&Filtering=free-ebooks',
+      endpoint: 'volumes?q=computer science&Filtering=free-ebooks&startIndex=${pageNumber*10}',
     );
     List<Book> books = getbookslist(data);
     saveData(books, AppStrings.kFeatureBox);
