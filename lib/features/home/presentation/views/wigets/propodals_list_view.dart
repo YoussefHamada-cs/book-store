@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PropodalsListView extends StatelessWidget {
-  const PropodalsListView({super.key, required this.book});
+  const PropodalsListView({super.key, required this.book,});
   final List<Book> book;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -20,7 +21,7 @@ class PropodalsListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                context.pushNamed(AppRoutes.homedetailsRoute);
+                context.pushNamed(AppRoutes.homedetailsRoute,extra: book[index]);
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -28,7 +29,8 @@ class PropodalsListView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   child: ImageWithShimmer(
                     imageUrl:
-                       book[index].image??'https://demofree.sirv.com/nope-not-here.jpg',
+                        book[index].image ??
+                        'https://demofree.sirv.com/nope-not-here.jpg',
                     height: size.height * .3,
                     width: 120,
                   ),

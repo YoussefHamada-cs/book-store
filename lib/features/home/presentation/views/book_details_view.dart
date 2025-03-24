@@ -1,11 +1,12 @@
 import 'package:books_store/core/presentation/widgets/icon_favorite.dart';
 import 'package:books_store/core/resources/app_colors.dart';
+import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:books_store/features/home/presentation/views/wigets/book_details_view_body.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatefulWidget {
-  const BookDetailsView({super.key /* required this.booksModel*/});
-  // final BooksModel booksModel;
+  const BookDetailsView({super.key, required this.book });
+    final Book book;
   @override
   State<BookDetailsView> createState() => _BookDetailsViewState();
 }
@@ -25,7 +26,7 @@ class _BookDetailsViewState extends State<BookDetailsView> {
         ),
         actions: [IconFavorite()],
       ),
-      body: BookDetailsViewBody(),
+      body: BookDetailsViewBody(book: widget.book,),
     );
   }
 }

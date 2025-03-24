@@ -31,7 +31,7 @@ class BodyHomeView extends StatelessWidget {
                     itemIndex: itemIndex,
                     imageUrl: limitedBooks[itemIndex].image??'',
                     onTap: () {
-                      context.pushNamed(AppRoutes.homedetailsRoute);
+                      context.pushNamed(AppRoutes.homedetailsRoute,extra: state.books[itemIndex]);
                     },
                     title:limitedBooks[itemIndex].title?? 'No Title',
                     date: limitedBooks[itemIndex].date??'No Date',

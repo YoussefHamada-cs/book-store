@@ -1,6 +1,7 @@
 import 'package:books_store/core/pages/main_page.dart';
 import 'package:books_store/core/router/app_routes.dart';
 import 'package:books_store/features/favorite/presentation/views/favorite_view.dart';
+import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:books_store/features/home/presentation/views/book_details_view.dart';
 import 'package:books_store/features/home/presentation/views/home_view.dart';
 import 'package:books_store/features/search/presentation/views/search_view.dart';
@@ -19,7 +20,7 @@ abstract class AppRouter {
       GoRoute(
         path: kbookDetailsView,
         name: AppRoutes.homedetailsRoute,
-        builder: (context, state) => BookDetailsView(),
+        builder: (context, state) => BookDetailsView(book:  state.extra as Book,),
       ),
       ShellRoute(
         builder: (context, state, child) => MainPage(child: child),

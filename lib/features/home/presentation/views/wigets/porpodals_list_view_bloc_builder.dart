@@ -11,7 +11,7 @@ class PorpodalsListViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<FeatureBooksCubit, FeatureBooksState>(
       builder: (context, state) {
         if (state is FeatureBooksSuccess) {
-          return PropodalsListView(book: state.books,);
+          return PropodalsListView(book: state.books, );
         } else if (state is FeatureBooksFailure) {
           return Center(child: Text(state.errormessage));
         } else {
