@@ -15,7 +15,7 @@ class NewsetItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(AppRoutes.homedetailsRoute);
+        context.pushNamed(AppRoutes.homedetailsRoute, extra: book);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -19,11 +19,11 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<Book>>> fechfeaturebooks({int pageNumber=0}) async {
     try {
       List<Book> books;
-      books = homeLocalDataSource.fechfeaturebooks();
+      books = homeLocalDataSource.fechfeaturebooks(pageNumber: pageNumber);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fechfeaturebooks();
+      books = await homeRemoteDataSource.fechfeaturebooks(pageNumber: pageNumber);
       return right(books);
     } catch (e) {
       if (e is DioException) {

@@ -3,15 +3,22 @@ import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:hive/hive.dart';
 
 abstract class HomeLocalDataSource {
-  List<Book> fechfeaturebooks();
+  List<Book> fechfeaturebooks({int pageNumber=0});
   List<Book> fechnewestbooks();
 }
 
 class HomeLocalDataSourceImple extends HomeLocalDataSource {
   @override
-  List<Book> fechfeaturebooks() {
+  List<Book> fechfeaturebooks({int pageNumber=0}) {
+    var startindex = pageNumber*10;
+    var endindex = (pageNumber+1)*10;
     var box = Hive.box<Book>(AppStrings.kFeatureBox);
-    return box.values.toList();
+    int length= box.values.length;
+    if (length<endindex ||length<=startindex) {
+      return [];
+      
+    }
+    return box.values.toList().sublist(startindex, endindex);
   }
 
   @override
