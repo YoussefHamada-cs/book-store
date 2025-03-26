@@ -10,6 +10,9 @@ sealed class FeatureBooksState extends Equatable {
 final class FeatureBooksInitial extends FeatureBooksState {}
 
 final class FeatureBooksLoading extends FeatureBooksState {}
+final class FeatureBooksPaginationLoading extends FeatureBooksState {}
+final class FeatureBooksPaginationFailure extends FeatureBooksState {  final String errormessage;
+  const FeatureBooksPaginationFailure(this.errormessage);}
 
 final class FeatureBooksFailure extends FeatureBooksState {
   final String errormessage;
