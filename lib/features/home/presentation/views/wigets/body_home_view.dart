@@ -6,7 +6,7 @@ import 'package:books_store/core/router/app_routes.dart';
 import 'package:books_store/features/home/presentation/manager/feature_books_cubit/feature_books_cubit.dart';
 import 'package:books_store/features/home/presentation/views/wigets/newest_list_view_bloc_builder.dart';
 
-import 'package:books_store/features/home/presentation/views/wigets/porpodals_list_view_bloc_builder.dart';
+import 'package:books_store/features/home/presentation/views/wigets/porpodals_list_view_bloc_buconsumer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,7 +53,7 @@ class BodyHomeView extends StatelessWidget {
             child: Text(AppStrings.proposals, style: Styles.textstyle25),
           ),
         ),
-        SliverToBoxAdapter(child: PorpodalsListViewBlocBuilder()),
+        SliverToBoxAdapter(child: PorpodalsListViewBlocConsumer()),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
