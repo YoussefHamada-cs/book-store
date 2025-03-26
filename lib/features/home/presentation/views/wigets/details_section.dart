@@ -6,8 +6,8 @@ import 'package:books_store/features/home/presentation/views/wigets/rate.dart';
 import 'package:flutter/material.dart';
 
 class DetalisSection extends StatelessWidget {
-  const DetalisSection({super.key, required this.book });
-   final Book book;
+  const DetalisSection({super.key, required this.book});
+  final Book book;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -17,12 +17,13 @@ class DetalisSection extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: width * .3),
             child: CustomItemCard(
-              imageurl: book.image??'https://demofree.sirv.com/nope-not-here.jpg',
+              imageurl:
+                  book.image ?? 'https://demofree.sirv.com/nope-not-here.jpg',
             ),
           ),
         ),
         Text(
-          book.title??'NoTitle',
+          book.title ?? 'NoTitle',
           style: Styles.textstyle25,
           textAlign: TextAlign.center,
           overflow: TextOverflow.ellipsis,
@@ -32,7 +33,8 @@ class DetalisSection extends StatelessWidget {
           //opacity عشان تخلي لون الخط باهت
           opacity: 0.7,
           child: Text(
-            book.authors.first,
+            book.authors.isNotEmpty ? book.authors.first : "Unknown Author",
+            maxLines: 1,
             style: Styles.textstyle16.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w600,
