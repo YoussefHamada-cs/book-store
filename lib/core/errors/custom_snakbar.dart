@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void errorsnakbar(BuildContext context, String errormessage) {
-  String? error;
-
+void customsnakbar(BuildContext context, String errormessage,color) {
+  String? massage;
+  Color? color;
   final snackBar = SnackBar(
     elevation: 6.0,
     behavior: SnackBarBehavior.floating,
@@ -12,7 +12,7 @@ void errorsnakbar(BuildContext context, String errormessage) {
       padding: EdgeInsets.all(16.0),
       height: 60,
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: color,
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
@@ -29,7 +29,7 @@ void errorsnakbar(BuildContext context, String errormessage) {
           SizedBox(width: 16),
           Expanded(
             child: Text(
-             error!,
+              massage!,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -42,7 +42,6 @@ void errorsnakbar(BuildContext context, String errormessage) {
       ),
     ),
     duration: Duration(seconds: 4),
-   
   );
 
   // عرض SnackBar باستخدام ScaffoldMessenger
