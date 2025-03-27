@@ -1,9 +1,12 @@
+import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:books_store/features/home/presentation/views/wigets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-class BooksActions extends StatelessWidget {
-  const BooksActions({super.key});
+import '../../../../../core/utils/lunch_url.dart';
 
+class BooksActions extends StatelessWidget {
+  const BooksActions({super.key,  required this.book});
+  final Book book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,7 +15,9 @@ class BooksActions extends StatelessWidget {
         children: [
           Expanded(
             child: CustomButton(
-              onPressed: () async {},
+              onPressed: () async {
+                launchCustomUrl(context,book.goTorGoogleStore);
+              },
               backgroundColor: Colors.white,
               textColor: Colors.black,
               borderRadius: const BorderRadius.only(
@@ -24,7 +29,10 @@ class BooksActions extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                   launchCustomUrl(context,book.goTorReadBook);
+                
+              },
               backgroundColor: Colors.deepOrangeAccent,
               textColor: Colors.white,
               borderRadius: const BorderRadius.only(

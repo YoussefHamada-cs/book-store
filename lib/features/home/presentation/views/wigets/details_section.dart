@@ -44,10 +44,10 @@ class DetalisSection extends StatelessWidget {
         const SizedBox(height: 10),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .31),
-          child: Count(count: 0),
+          child: Count(count: book.pageCount ?? 0)
         ),
         const SizedBox(height: 25),
-        BooksActions(),
+        BooksActions(book: book,),
       ],
     );
   }

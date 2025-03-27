@@ -1,4 +1,4 @@
-import 'package:books_store/core/errors/error_snakbar.dart';
+import 'package:books_store/core/errors/custom_snakbar.dart';
 import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:books_store/features/home/presentation/manager/feature_books_cubit/feature_books_cubit.dart';
 import 'package:books_store/features/home/presentation/views/wigets/propodals_list_view.dart';
@@ -26,7 +26,7 @@ class _PorpodalsListViewBlocBuilderState
           books.addAll(state.books);
         } else if (state is FeatureBooksPaginationFailure) {
           // عرض SnackBar في حالة فشل التحميل
-          errorsnakbar(context, state.errormessage);
+          customsnakbar(context, state.errormessage,Colors.redAccent);
         }
       },
       builder: (context, state) {
@@ -37,7 +37,8 @@ class _PorpodalsListViewBlocBuilderState
         } else if (state is FeatureBooksFailure) {
           return Center(child: Text(state.errormessage));
         } else {
-          return Center(child: CircularProgressIndicator());
+          return PropodalsListView(books: books);
+
         }
       },
     );

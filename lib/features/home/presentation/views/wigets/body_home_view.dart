@@ -42,7 +42,20 @@ class BodyHomeView extends StatelessWidget {
             } else if(state is FeatureBooksFailure){
                 return  SliverToBoxAdapter(child: Center(child: Text(state.errormessage)));
             } else{
- return  SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()));
+ return  SliverToBoxAdapter(
+  child: CustomSlider(
+    itemBuilder: (BuildContext context, int itemIndex, index) {
+      return SliderCard(
+        itemIndex: itemIndex,
+        imageUrl: '', // صورة فارغة أو صورة افتراضية للـ Shimmer
+        onTap: () {},
+        title: '',
+        date: '',
+      );
+    },
+  ),
+);
+
             }
            
           },

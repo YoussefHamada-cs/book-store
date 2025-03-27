@@ -17,6 +17,9 @@ class BookAdapter extends TypeAdapter<Book> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Book(
+      goTorReadBook: fields[6] as String,
+      goTorGoogleStore: fields[7] as String,
+      pageCount: fields[5] as int?,
       title: fields[2] as String?,
       authors: (fields[3] as List).cast<String>(),
       date: fields[4] as String?,
@@ -27,7 +30,7 @@ class BookAdapter extends TypeAdapter<Book> {
   @override
   void write(BinaryWriter writer, Book obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(1)
       ..write(obj.image)
       ..writeByte(2)
@@ -35,7 +38,13 @@ class BookAdapter extends TypeAdapter<Book> {
       ..writeByte(3)
       ..write(obj.authors)
       ..writeByte(4)
-      ..write(obj.date);
+      ..write(obj.date)
+      ..writeByte(5)
+      ..write(obj.pageCount)
+      ..writeByte(6)
+      ..write(obj.goTorReadBook)
+      ..writeByte(7)
+      ..write(obj.goTorGoogleStore);
   }
 
   @override

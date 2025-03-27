@@ -25,10 +25,13 @@ class BookModel extends Book {
     this.accessInfo,
     this.searchInfo,
   }) : super(
+    goTorGoogleStore:accessInfo?.pdf?.acsTokenLink ?? '',
+    goTorReadBook:volumeInfo?.previewLink??'' ,
          title: volumeInfo?.title ?? 'No Title',
          authors: volumeInfo?.authors ?? [],
          date: volumeInfo?.publishedDate ?? 'no date',
          image: volumeInfo?.imageLinks?.thumbnail,
+         pageCount:volumeInfo?.pageCount??0,
        );
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(

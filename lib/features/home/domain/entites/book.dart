@@ -11,8 +11,15 @@ class Book {
   final List<String> authors;
   @HiveField(4)
   final String? date;
-
-  Book({
+  @HiveField(5)
+  final int? pageCount;
+  @HiveField(6)
+  final String goTorReadBook;
+  @HiveField(7)
+   final String goTorGoogleStore;
+  Book( {
+    required  this.goTorReadBook, required  this.goTorGoogleStore,
+    required this.pageCount,
     required this.title,
     required this.authors,
     required this.date,
