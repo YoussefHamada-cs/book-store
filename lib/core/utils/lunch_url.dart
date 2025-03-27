@@ -8,7 +8,7 @@ Future<void> launchCustomUrl(context, String? url) async {
   Uri uri = Uri.parse(url);
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
-    customsnakbar(context,'Success', const Color.fromARGB(255, 104, 196, 107));
+    customsnakbar(context,'Success',  Colors.green);
   } else {
     customsnakbar(context,'Could not launch $url', Colors.red);
   }
