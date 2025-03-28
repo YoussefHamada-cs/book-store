@@ -17,7 +17,9 @@ class Book {
   final String goTorReadBook;
   @HiveField(7)
    final String goTorGoogleStore;
-  Book( {
+    @HiveField(8)
+   final List<String>? categories;
+  Book(  {   required this.categories,
     required  this.goTorReadBook, required  this.goTorGoogleStore,
     required this.pageCount,
     required this.title,

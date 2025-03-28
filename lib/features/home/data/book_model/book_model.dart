@@ -25,6 +25,7 @@ class BookModel extends Book {
     this.accessInfo,
     this.searchInfo,
   }) : super(
+    categories: volumeInfo?.categories??[],
     goTorGoogleStore:accessInfo?.pdf?.acsTokenLink ?? '',
     goTorReadBook:volumeInfo?.previewLink??'' ,
          title: volumeInfo?.title ?? 'No Title',

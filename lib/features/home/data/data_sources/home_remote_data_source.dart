@@ -7,6 +7,7 @@ import 'package:books_store/features/home/domain/entites/book.dart';
 abstract class HomeRemoteDataSource {
   Future<List<Book>> fechfeaturebooks({int pageNumber=0});
   Future<List<Book>> fechnewestbooks();
+  Future<List<Book>> fetchDetailsListViewBooks({required String category});
 }
 
 class HomeRemoteDataSourceImpel extends HomeRemoteDataSource {
@@ -34,6 +35,18 @@ class HomeRemoteDataSourceImpel extends HomeRemoteDataSource {
     return books;
   }
 
+  
+  @override
+  Future<List<Book>> fetchDetailsListViewBooks({required String category})async {
+     var data = await apiService.get(
+      endpoint: 'volumes?q=$category&Filtering=free-ebooks&Sorting=relevance',
+    );
+    List<Book> books = getbookslist(data);
+    
+    saveData(books, AppStrings.knewestBox);
+    return books;
+  }
+  
   List<Book> getbookslist(Map<String, dynamic> data) {
     List<Book> books = [];
     for (var items in data['items']) {
