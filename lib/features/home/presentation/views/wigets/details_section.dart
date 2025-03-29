@@ -18,7 +18,7 @@ class DetalisSection extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: width * .3),
             child: CustomItemCard(
               imageurl:
-                  book.image ?? 'https://demofree.sirv.com/nope-not-here.jpg',
+                  book.image ?? 'https://demofree.sirv.com/nope-not-here.jpg', book: book,
             ),
           ),
         ),

@@ -69,7 +69,7 @@ class NewsetItem extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(child: IconFavorite()),
+              Expanded(child: IconFavorite(book: book,)),
             ],
           ),
         ),

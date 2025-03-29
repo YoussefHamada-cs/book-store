@@ -4,6 +4,7 @@ import 'package:books_store/core/resources/app_strings.dart';
 import 'package:books_store/core/router/app_router.dart';
 import 'package:books_store/core/utils/service_locator.dart';
 import 'package:books_store/core/utils/simple_bloc_observer.dart';
+import 'package:books_store/features/favorite/presentation/manager/favorite_cubit.dart';
 import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,8 @@ void main() async {
   Hive.registerAdapter(BookAdapter());
   await Hive.openBox<Book>(AppStrings.kFeatureBox);
   await Hive.openBox<Book>(AppStrings.knewestBox);
+await Hive.openBox<Book>(AppStrings.kfavoritesBox);
+  await Hive.openBox<Book>(AppStrings.ksimilarBox);
   setupServiceLocator();
   Bloc.observer = SimpleBlocObserer();
   runApp(const MyApp());
@@ -27,13 +30,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: AppColors.kprimarycolor,
-        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+    return MultiBlocProvider(
+      providers: [
+         BlocProvider(
+                 create: (context) => FavoriteCubit(),)
+      ],
+      child: MaterialApp.router(
+        
+        routerConfig: AppRouter.router,
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: AppColors.kprimarycolor,
+          textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+        ),
+        debugShowCheckedModeBanner: false,
       ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
