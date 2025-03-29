@@ -31,7 +31,7 @@ class ImageWithShimmer extends StatelessWidget {
           ),
 
       errorWidget:
-          (context, url, error) => Icon(Icons.error, color: AppColors.error),
+          (context, url, error) => Icon(Icons.error, ),
       imageUrl: imageUrl,
     );
   }
