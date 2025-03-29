@@ -10,29 +10,22 @@ class BookDetailsViewBody extends StatelessWidget {
   final Book book;
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverFillRemaining(
-          child: Column(
-            children: [
-              DetalisSection(book: book),
-              const Expanded(child: SizedBox(height: 5)),
-              BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
-                builder: (context, state) {
-                  if (state is SimilarBooksSuccess) {
-                     return  SimilarBooksSection(book: state.books,);
-                  } else if(state is SimilarBooksFailure) {
-          return  Center(child: Text(state.errormessage));
-        } else{
- return  Center(child: CircularProgressIndicator());
-        }
-                 
-                },
-              ),
-              SizedBox(height: 20),
-            ],
-          ),
+    return Column(
+      children: [
+        DetalisSection(book: book),
+        const Expanded(child: SizedBox(height: 5)),
+        BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
+          builder: (context, state) {
+            if (state is SimilarBooksSuccess) {
+              return SimilarBooksSection(book: state.books);
+            } else if (state is SimilarBooksFailure) {
+              return Center(child: Text(state.errormessage));
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
         ),
+        SizedBox(height: 20),
       ],
     );
   }
