@@ -1,12 +1,15 @@
 import 'package:books_store/core/presentation/widgets/custom_list_view_item.dart';
 import 'package:books_store/core/resources/styles.dart';
+
+import 'package:books_store/features/search/presentation/manager/search_cubit/search_cubit_cubit.dart';
 import 'package:books_store/features/search/presentation/widgets/custom_text_field.dart';
 import 'package:books_store/core/presentation/widgets/custom_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
-
+  const SearchViewBody({super.key, });
+ 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,15 +25,25 @@ class SearchViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: CustomListView(
-              itemcount: 10,
-              itemBuilder: (context, index) {
-                return CustomListViewItem(
-                  imageurl: 'https://demofree.sirv.com/nope-not-here.jpg',
-                  title: 'title',
-                  auther: 'youssf hamada',
-                  date: '20 2 2024',
-                );
+            child: BlocBuilder<SearchCubitCubit, SearchCubitState>(
+              builder: (context, state) {
+                if (state is SearchBooksSuccess) {
+                  return CustomListView(
+                    itemcount: state.books.length,
+                    itemBuilder: (context, index) {
+                      return CustomListViewItem(
+                        imageurl:state. books[index].image??'',
+                        title:state. books[index].title??'No Title',
+                        auther: state.  books[index].authors.isNotEmpty ?state. books[index].authors.first : "Unknown Author",
+                        date:state. books[index].date??'', book: state.books[index],
+                      );
+                    },
+                  );
+                } else if (state is SearchBooksFailure) {
+                  return Center(child: Text(state.errormessage));
+                } else {
+                  return Center(child: Text('Search'));
+                }
               },
             ),
           ),
