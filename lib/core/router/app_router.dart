@@ -20,7 +20,7 @@ abstract class AppRouter {
       GoRoute(
         path: kbookDetailsView,
         name: AppRoutes.homedetailsRoute,
-        builder: (context, state) => BookDetailsView(book:  state.extra as Book,),
+        builder: (context, state) => BookDetailsView(book: state.extra as Book),
       ),
       ShellRoute(
         builder: (context, state, child) => MainPage(child: child),
@@ -28,7 +28,8 @@ abstract class AppRouter {
           GoRoute(
             path: khomeView,
             name: AppRoutes.homeRoute,
-            builder: (context, state) => const HomeView(),
+            builder:
+                (context, state) => const HomeView(),
           ),
 
           GoRoute(

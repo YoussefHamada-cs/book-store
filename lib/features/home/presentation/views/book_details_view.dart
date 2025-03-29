@@ -27,12 +27,12 @@ class _BookDetailsViewState extends State<BookDetailsView> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.close),
+          icon:  Icon(Icons.close),
         ),
-        actions: [IconFavorite()],
+        actions: [IconFavorite(book:widget.book ,)],
       ),
       body: BlocProvider(
-        create: (context) => SimilarBooksCubit( GetSimilarBooksUseCase(getIt.get<HomeRepoImpl>()))..fetchSimilarBooks(category:widget.book.categories?.first??'' ),
+        create: (context) => SimilarBooksCubit( GetSimilarBooksUseCase(getIt.get<HomeRepoImpl>()))..fetchSimilarBooks(category:widget.book.categories?.first??'programing' ),
         child: BookDetailsViewBody(book: widget.book),
       ),
     );

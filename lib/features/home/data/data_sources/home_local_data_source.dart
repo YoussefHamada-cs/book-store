@@ -30,7 +30,7 @@ class HomeLocalDataSourceImple extends HomeLocalDataSource {
   
   @override
   List<Book> fetchDetailsListViewBooks({required String category}) {
-     var box = Hive.box<Book>(AppStrings.knewestBox);
+     var box = Hive.box<Book>(AppStrings.ksimilarBox);
     return box.values.toList();
   }
 }

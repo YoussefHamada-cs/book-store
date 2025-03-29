@@ -16,7 +16,7 @@ class DetailsListView extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return CustomItemCard(
-              imageurl: book[index].image??'',
+              imageurl: book[index].image??'', book: book[index],
             );
           },
         ),

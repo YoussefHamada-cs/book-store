@@ -15,7 +15,7 @@ class NewestListViewBlocBuilder extends StatelessWidget {
         } else if(state is NewestBooksFailure) {
           return SliverToBoxAdapter(child: Center(child: Text(state.errormessage)));
         } else{
- return SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()));
+   return NewestListView(book:[]);
         }
        
       },

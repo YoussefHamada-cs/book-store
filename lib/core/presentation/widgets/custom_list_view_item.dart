@@ -3,6 +3,7 @@ import 'package:books_store/core/presentation/widgets/image_with_shimmer.dart';
 import 'package:books_store/core/resources/fonts.dart';
 import 'package:books_store/core/resources/styles.dart';
 import 'package:books_store/core/router/app_routes.dart';
+import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,20 +14,21 @@ class CustomListViewItem extends StatelessWidget {
     required this.title,
     required this.auther,
     required this.date,
+    required this.book,
   });
   final String imageurl;
   final String title;
   final String auther;
   final String date;
-
+  final Book book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(AppRoutes.homedetailsRoute);
+        context.pushNamed(AppRoutes.homedetailsRoute, extra: book);
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: SizedBox(
           height: 110,
           child: Row(
@@ -58,17 +60,19 @@ class CustomListViewItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                  Text(
-                    auther,
-                    style: Styles.textstyle14,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Expanded(
+                    child: Text(
+                      auther.length > 20 ? auther.substring(0, 20) : auther,
+                      style: Styles.textstyle14,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   const SizedBox(height: 3),
                   Expanded(child: Text(date, style: Styles.textstyle20)),
                 ],
               ),
-              Expanded(child: IconFavorite()),
+              Expanded(child: IconFavorite(book: book,)),
             ],
           ),
         ),
