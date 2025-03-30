@@ -21,7 +21,7 @@ class BookDetailsViewBody extends StatelessWidget {
             } else if (state is SimilarBooksFailure) {
               return Center(child: Text(state.errormessage));
             } else {
-              return Center(child: CircularProgressIndicator());
+               return SimilarBooksSection(book: [] );
             }
           },
         ),
