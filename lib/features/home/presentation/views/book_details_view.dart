@@ -36,7 +36,9 @@ class _BookDetailsViewState extends State<BookDetailsView> {
             (context) => SimilarBooksCubit(
               GetSimilarBooksUseCase(getIt.get<HomeRepoImpl>()),
             )..fetchSimilarBooks(
-              category: widget.book.categories?.first ?? 'Computers',
+            category: widget.book.categories != null && widget.book.categories!.isNotEmpty
+    ? widget.book.categories!.first
+    : 'Computers',
             ),
         child: BookDetailsViewBody(book: widget.book),
       ),
