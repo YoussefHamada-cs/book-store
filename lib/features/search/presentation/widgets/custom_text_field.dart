@@ -1,4 +1,5 @@
-import 'package:books_store/core/errors/custom_snakbar.dart';
+
+import 'package:books_store/core/presentation/widgets/custom_snakbar.dart';
 import 'package:books_store/features/search/presentation/manager/search_cubit/search_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

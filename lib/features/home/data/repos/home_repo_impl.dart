@@ -38,14 +38,16 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<Book>>> fechnewestbooks() async {
+  Future<Either<Failure, List<Book>>> fechnewestbooks({
+    int pageNumber = 0,
+  }) async {
     try {
       List<Book> books;
-      books = homeLocalDataSource.fechnewestbooks();
+      books = homeLocalDataSource.fechnewestbooks(pageNumber: pageNumber);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fechnewestbooks();
+      books = await homeRemoteDataSource.fechnewestbooks(pageNumber: pageNumber);
       return right(books);
     } catch (e) {
       if (e is DioException) {

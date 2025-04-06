@@ -1,4 +1,5 @@
-import 'package:books_store/core/errors/custom_snakbar.dart';
+
+import 'package:books_store/core/presentation/widgets/custom_snakbar.dart';
 import 'package:books_store/features/home/domain/entites/book.dart';
 import 'package:books_store/features/home/presentation/manager/feature_books_cubit/feature_books_cubit.dart';
 import 'package:books_store/features/home/presentation/views/wigets/propodals_list_view.dart';

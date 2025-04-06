@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 class NewsetItem extends StatelessWidget {
   const NewsetItem({super.key, required this.book});
   final Book book;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -32,8 +33,9 @@ class NewsetItem extends StatelessWidget {
                     errorWidget:
                         (context, url, error) => const Icon(Icons.error),
                     imageUrl:
-                        book.image ??
-                        'https://demofree.sirv.com/nope-not-here.jpg',
+                        book.image != null && book.image!.isNotEmpty
+                            ? book.image!
+                            : 'https://demofree.sirv.com/nope-not-here.jpg',
                   ),
                 ),
               ),
@@ -55,8 +57,11 @@ class NewsetItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      book.authors.first.toString(),
+                      book.authors.isNotEmpty
+                          ? book.authors.first.toString()
+                          : 'Unknown Author',
                       style: Styles.textstyle14,
+                      maxLines: 1,
                     ),
                     const SizedBox(height: 3),
                     Expanded(
@@ -69,7 +74,7 @@ class NewsetItem extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(child: IconFavorite(book: book,)),
+              Expanded(child: IconFavorite(book: book)),
             ],
           ),
         ),

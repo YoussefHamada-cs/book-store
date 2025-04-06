@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 
 abstract class HomeLocalDataSource {
   List<Book> fechfeaturebooks({int pageNumber=0});
-  List<Book> fechnewestbooks();
+  List<Book> fechnewestbooks({int pageNumber=0});
   List<Book>  fetchDetailsListViewBooks({required String category});
 }
 
@@ -23,9 +23,16 @@ class HomeLocalDataSourceImple extends HomeLocalDataSource {
   }
 
   @override
-  List<Book> fechnewestbooks() {
+  List<Book> fechnewestbooks({int pageNumber=0}) {
+    var startindex = pageNumber*10;
+    var endindex = (pageNumber+1)*10;
     var box = Hive.box<Book>(AppStrings.knewestBox);
-    return box.values.toList();
+    int length= box.values.length;
+     if (length<endindex ||length<=startindex) {
+      return [];
+      
+    }
+    return box.values.toList().sublist(startindex,endindex);
   }
   
   @override

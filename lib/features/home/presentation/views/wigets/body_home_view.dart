@@ -14,10 +14,12 @@ import 'package:go_router/go_router.dart';
 
 class BodyHomeView extends StatelessWidget {
  const BodyHomeView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
+          final ScrollController scrollController = ScrollController();
     return CustomScrollView(
+      controller: scrollController ,
       slivers: [
         BlocBuilder<FeatureBooksCubit, FeatureBooksState>(
           builder: (context, state) {
@@ -73,7 +75,7 @@ class BodyHomeView extends StatelessWidget {
             child: Text(AppStrings.newset, style: Styles.textstyle25),
           ),
         ),
-        NewestListViewBlocBuilder(),
+        NewestListViewBlocBuilder(scrollController: scrollController),
       ],
     );
   }
