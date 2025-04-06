@@ -1,18 +1,15 @@
-
 import 'package:flutter/material.dart';
-
 
 void customsnakbar(BuildContext context, String errorMessage, Color color) {
   // إنشاء SnackBar
   final snackBar = SnackBar(
-    
     elevation: 6.0,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     backgroundColor: Colors.transparent,
     content: Container(
       padding: const EdgeInsets.only(left: 16.0),
-      height: 40,
+      height: 50,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10.0),
