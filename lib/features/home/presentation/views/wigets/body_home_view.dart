@@ -1,12 +1,13 @@
-import 'package:books_store/core/presentation/widgets/custom_slider.dart';
-import 'package:books_store/core/presentation/widgets/slider_card.dart';
+
 import 'package:books_store/core/resources/app_strings.dart';
 import 'package:books_store/core/resources/styles.dart';
 import 'package:books_store/core/router/app_routes.dart';
 import 'package:books_store/features/home/presentation/manager/feature_books_cubit/feature_books_cubit.dart';
+import 'package:books_store/features/home/presentation/views/wigets/custom_slider.dart';
 import 'package:books_store/features/home/presentation/views/wigets/newest_list_view_bloc_builder.dart';
 
 import 'package:books_store/features/home/presentation/views/wigets/porpodals_list_view_bloc_buconsumer.dart';
+import 'package:books_store/features/home/presentation/views/wigets/slider_card.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

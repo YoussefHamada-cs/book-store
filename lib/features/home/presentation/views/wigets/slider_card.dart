@@ -1,7 +1,8 @@
-import 'package:books_store/core/presentation/widgets/slider_card_image.dart';
+
 import 'package:books_store/core/resources/app_colors.dart';
 import 'package:books_store/core/resources/app_values.dart';
 import 'package:books_store/core/resources/styles.dart';
+import 'package:books_store/features/home/presentation/views/wigets/slider_card_image.dart';
 import 'package:flutter/material.dart';
 
 class SliderCard extends StatelessWidget {
